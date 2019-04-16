@@ -1,0 +1,6 @@
+{
+  "name": "Cool Qiniu Uploader",
+  "version": "1.0",
+  "description": "An extension for chrome to upload images to qiniu cdn.",
+  "manifest_version": 2
+}
