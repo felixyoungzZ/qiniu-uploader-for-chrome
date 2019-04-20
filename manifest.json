@@ -2,5 +2,28 @@
   "name": "Cool Qiniu Uploader",
   "version": "1.0",
   "description": "An extension for chrome to upload images to qiniu cdn.",
-  "manifest_version": 2
+  "manifest_version": 2,
+  "icons": {
+		"16": "images/icon.png",
+		"48": "images/icon.png",
+		"128": "images/icon.png"
+	},
+  "options_ui": {
+		"page": "options.html",
+		"chrome_style": true
+  },
+  "background": {
+		"scripts": ["background.js"]
+	},
+  "permissions": [
+		"contextMenus",
+		"webRequest",
+    "storage"
+  ],
+  "browser_action": 
+	{
+		"default_icon": "images/icon.png",
+		"default_title": "Qiniu Uploader",
+		"default_popup": "popup.html"
+	}
 }
