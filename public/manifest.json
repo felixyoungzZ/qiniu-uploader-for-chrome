@@ -2,7 +2,8 @@
   "name": "Cool Qiniu Uploader",
   "version": "1.0",
   "description": "An extension for chrome to upload images to qiniu cdn.",
-  "manifest_version": 2,
+	"manifest_version": 2,
+	"homepage_url": "https://www.felixzzz.cn",
   "icons": {
 		"16": "images/icon.png",
 		"48": "images/icon.png",
@@ -13,7 +14,7 @@
 		"chrome_style": true
   },
   "background": {
-		"scripts": ["background.js"]
+		"page": "background.html"
 	},
   "permissions": [
 		"contextMenus",

@@ -1,0 +1,43 @@
+{
+  "name": "qiniu-uploader-for-chrome",
+  "version": "1.0.0",
+  "description": "A cool uploader to upload image to qiniu cdn through chrome",
+  "main": "index.js",
+  "scripts": {
+    "watch": "rm -rf ./dist && webpack -w",
+    "build": "rm -rf ./dist && webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felixyoungzZ/qiniu-uploader-for-chrome.git"
+  },
+  "keywords": [
+    "qiniu",
+    "chrome",
+    "plugin",
+    "webpack"
+  ],
+  "author": "felix",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/felixyoungzZ/qiniu-uploader-for-chrome/issues"
+  },
+  "homepage": "https://github.com/felixyoungzZ/qiniu-uploader-for-chrome#readme",
+  "devDependencies": {
+    "copy-webpack-plugin": "^5.0.2",
+    "css-loader": "^2.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^5.3.3",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.4",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.0",
+    "autoprefixer": "^9.5.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.6.0"
+  },
+  "dependencies": {
+
+  }
+}
