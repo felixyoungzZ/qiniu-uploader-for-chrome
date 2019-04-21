@@ -42,6 +42,11 @@
   resolved "http://registry.npm.taobao.org/@types/filewriter/download/@types/filewriter-0.0.28.tgz#c054e8af4d9dd75db4e63abc76f885168714d4b3"
   integrity sha1-wFTor02d11205jq8dviFFocU1LM=
 
+"@types/qiniu-js@^2.5.0":
+  version "2.5.0"
+  resolved "http://registry.npm.taobao.org/@types/qiniu-js/download/@types/qiniu-js-2.5.0.tgz#6d4e3948eae48dd65ee8fd39e4570799042aed0a"
+  integrity sha1-bU45SOrkjdZe6P055FcHmQQq7Qo=
+
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
   resolved "http://registry.npm.taobao.org/@webassemblyjs/ast/download/@webassemblyjs/ast-1.8.5.tgz#51b1c5fe6576a34953bf4b253df9f0d490d9e359"
@@ -3078,6 +3083,11 @@ punycode@^2.1.0:
   version "2.1.1"
   resolved "http://registry.npm.taobao.org/punycode/download/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha1-tYsBCsQMIsVldhbI0sLALHv0eew=
+
+qiniu-js@^2.5.4:
+  version "2.5.4"
+  resolved "http://registry.npm.taobao.org/qiniu-js/download/qiniu-js-2.5.4.tgz#9d708bbdb9b5c326a42b59900eacd6d4497c81e4"
+  integrity sha1-nXCLvbm1wyakK1mQDqzW1El8geQ=
 
 querystring-es3@^0.2.0:
   version "0.2.1"
