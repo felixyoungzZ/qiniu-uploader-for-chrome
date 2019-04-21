@@ -23,11 +23,11 @@ export class Dragger {
     this.switch('on');
   }
 
-  public dispose() {
-    this.switch('dispose');
+  public off() {
+    this.switch('off');
   }
 
-  private switch(type:'on'|'dispose') {
+  private switch(type:'on'|'off') {
     const operator = type === 'on' ? 'add' : 'remove';
 
     Object.keys(this.callbacks).forEach((callbackName) => {
