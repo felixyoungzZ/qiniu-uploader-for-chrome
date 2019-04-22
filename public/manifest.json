@@ -19,7 +19,9 @@
   "permissions": [
 		"contextMenus",
 		"webRequest",
-    "storage"
+		"storage",
+		"https://*/",
+		"http://*/"
   ],
   "browser_action": 
 	{
