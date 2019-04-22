@@ -10,6 +10,7 @@ module.exports = {
     background: path.resolve(__dirname, './src/background'),
     options: path.resolve(__dirname, './src/options'),
     popup: path.resolve(__dirname, './src/popup'),
+    uploadPage: path.resolve(__dirname, './src/uploadPage'),
   },
   output: {
     filename: 'js/[name].js',
@@ -62,6 +63,11 @@ module.exports = {
       filename: 'popup.html',
       template: './public/popup.html',
       chunks: ['popup'],
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'uploadPage.html',
+      template: './public/uploadPage.html',
+      chunks: ['uploadPage'],
     }),
     new CopyWebpackPlugin([
       {
