@@ -1,27 +1,21 @@
-type ImageFormat = 'image/png' | 'image/jpeg' | 'image/svg';
+import * as U from './utils';
 
-export async function convertToDataURLWithCanvas(url:string, format:ImageFormat) : Promise<string> {
+export async function onvertFileToDataURLviaFileReader(url:string) : Promise<string> {
   return new Promise((resolve) => {
-    let dataURL;
-
-    const img = new Image();
-    img.crossOrigin = 'Anonymous';
-    img.onload = function(this:HTMLImageElement) {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-
-      canvas.height = this.height;
-      canvas.width = this.width;
-
-      if (ctx) {
-        ctx.drawImage(this, 0, 0);
-        dataURL = canvas.toDataURL(format);
-        resolve(dataURL);
+    const xhr= new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = () => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        resolve(reader.result as string);
       }
+
+      reader.readAsDataURL(xhr.response);
     };
 
-    img.src = url;
-  });
+    xhr.open('GET', url);
+    xhr.send();
+  })
 }
 
 export function convertDataURLToBlob(dataURL:string) {
@@ -36,4 +30,13 @@ export function convertDataURLToBlob(dataURL:string) {
   }
 
   return new Blob([u8arr], { type:mimeType });
+}
+
+export async function getBlob(url:string) {
+  // URL or dataURL
+  if (U.isURL(url)) {
+    url = await onvertFileToDataURLviaFileReader(url);
+  }
+
+  return convertDataURLToBlob(url);
 }
