@@ -12,23 +12,27 @@ interface AuthOptions {
 }
 
 // Get upload token. From https://github.com/neal1991/image-host/blob/master/js/qiniu.js
-export function getUploadToken(options:AuthOptions) {
-  const {
-    accessKey,
-    secretKey,
-    bucket,
-  } = options;
 
-  const putPolicy = {
-    scope: bucket,
-    deadline: new Date().getTime() + MAX_AGE_OF_TOKEN,
-  };
+export const token = {
+  generate: function(options:AuthOptions) {
+    const {
+      accessKey,
+      secretKey,
+      bucket,
+    } = options;
 
-  const encoded = Base64.encode(UTF.utf16to8(JSON.stringify(putPolicy)));
-  const hash = CryptoJS.HmacSHA1(encoded, secretKey);
-  const encoded_signed = hash.toString(CryptoJS.enc.Base64);
-  return accessKey + ':' + Base64.safe(encoded_signed) + ':' + encoded;
-}
+    const putPolicy = {
+      scope: bucket,
+      deadline: new Date().getTime() + MAX_AGE_OF_TOKEN,
+    };
+
+    const encoded = Base64.encode(UTF.utf16to8(JSON.stringify(putPolicy)));
+    const hash = CryptoJS.HmacSHA1(encoded, secretKey);
+    const encoded_signed = hash.toString(CryptoJS.enc.Base64);
+    return accessKey + ':' + Base64.safe(encoded_signed) + ':' + encoded;
+  },
+  get: function() {},
+};
 
 export function upload(file:Blob) {
 }
