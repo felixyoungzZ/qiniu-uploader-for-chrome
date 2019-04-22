@@ -1,16 +1,7 @@
-import './styles/base.css';
-import './styles/popup.css';
+const button = document.getElementById('upload') as HTMLButtonElement;
 
-import { Dragger } from './libs/dragger';
-
-const dragArea = document.getElementById('drag-area') as HTMLElement;
-
-const dragger = new Dragger(dragArea, {
-  drop:dropCallback,
-});
-
-function dropCallback(e:DragEvent) {
-  alert(e.dataTransfer!.files[0].name);
-}
-
-dragger.on();
+button.addEventListener('click', (e) => {
+  chrome.tabs.create({
+    url:'./uploadPage.html'
+  })
+})
