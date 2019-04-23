@@ -35,4 +35,5 @@ export const token = {
 };
 
 export function upload(file:Blob) {
+  return qiniu.upload;
 }

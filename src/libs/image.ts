@@ -8,14 +8,14 @@ export async function onvertFileToDataURLviaFileReader(url:string) : Promise<str
       const reader = new FileReader();
       reader.onloadend = () => {
         resolve(reader.result as string);
-      }
+      };
 
       reader.readAsDataURL(xhr.response);
     };
 
     xhr.open('GET', url);
     xhr.send();
-  })
+  });
 }
 
 export function convertDataURLToBlob(dataURL:string) {
