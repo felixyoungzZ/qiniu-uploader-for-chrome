@@ -2,7 +2,6 @@ import './styles/base.css';
 import './styles/uploadPage.css';
 
 import { Dragger } from './libs/dragger';
-import * as qiniu from './libs/qiniu';
 
 const dragArea = document.getElementById('drag-area') as HTMLElement;
 
@@ -18,6 +17,6 @@ dragger.on();
 
 const fileBox = document.getElementById('file-box') as HTMLInputElement;
 
-fileBox.addEventListener('change',function(){
+fileBox.addEventListener('change', function() {
   alert(this.files![0].name);
-}, false);
+});
