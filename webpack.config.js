@@ -7,10 +7,10 @@ const dist = path.resolve(__dirname, './dist');
 module.exports = {
   mode: 'production',
   entry: {
-    background: path.resolve(__dirname, './src/background'),
-    options: path.resolve(__dirname, './src/options'),
-    popup: path.resolve(__dirname, './src/popup'),
-    uploadPage: path.resolve(__dirname, './src/uploadPage'),
+    background: path.resolve(__dirname, './src/pages/Background/index.tsx'),
+    options: path.resolve(__dirname, './src/pages/Options/index.tsx'),
+    popup: path.resolve(__dirname, './src/pages/Popup/index.tsx'),
+    uploadPage: path.resolve(__dirname, './src/pages/UploadPage/index.tsx'),
   },
   output: {
     filename: 'js/[name].js',
@@ -24,11 +24,15 @@ module.exports = {
         loader: 'ts-loader',
       },
       {
-        test: /\.css$/,
+        test: /\.less$/,
         use: [
           'style-loader',
           {
             loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: "[local]___[hash:base64:5]",
+            },
           },
           {
             loader: 'postcss-loader',
@@ -41,32 +45,39 @@ module.exports = {
               ]
             },
           },
+          {
+            loader: 'less-loader',
+            options: {
+              strictMath: true,
+              noIeCompat: true,
+            },
+          },
         ],
       },
     ],
   },
   resolve: {
-    extensions: ['.ts', '.js' ],
+    extensions: ['tsx', '.ts', '.js' ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'background.html',
-      template: './public/background.html',
+      template: './public/Background.html',
       chunks: ['background'],
     }),
     new HtmlWebpackPlugin({
       filename: 'options.html',
-      template: './public/options.html',
+      template: './public/Options.html',
       chunks: ['options'],
     }),
     new HtmlWebpackPlugin({
       filename: 'popup.html',
-      template: './public/popup.html',
+      template: './public/Popup.html',
       chunks: ['popup'],
     }),
     new HtmlWebpackPlugin({
       filename: 'uploadPage.html',
-      template: './public/uploadPage.html',
+      template: './public/UploadPage.html',
       chunks: ['uploadPage'],
     }),
     new CopyWebpackPlugin([
