@@ -7,10 +7,10 @@ const dist = path.resolve(__dirname, './dist');
 module.exports = {
   mode: 'production',
   entry: {
-    background: path.resolve(__dirname, './src/pages/Background/index.tsx'),
-    options: path.resolve(__dirname, './src/pages/Options/index.tsx'),
-    popup: path.resolve(__dirname, './src/pages/Popup/index.tsx'),
-    uploadPage: path.resolve(__dirname, './src/pages/UploadPage/index.tsx'),
+    background: path.resolve(__dirname, './src/pages/Background/index'),
+    options: path.resolve(__dirname, './src/pages/Options/index'),
+    popup: path.resolve(__dirname, './src/pages/Popup/index'),
+    uploadPage: path.resolve(__dirname, './src/pages/UploadPage/index'),
   },
   output: {
     filename: 'js/[name].js',
@@ -57,7 +57,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['tsx', '.ts', '.js' ],
+    extensions: ['.tsx', '.ts', '.js' ],
   },
   plugins: [
     new HtmlWebpackPlugin({
