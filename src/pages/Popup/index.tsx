@@ -1,8 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as styles from './index.less';
+import './index.less';
+
+import { App } from './App';
 
 ReactDOM.render(
-  <div className={ styles.app }>Hello World</div>,
+  <App />,
   document.getElementById('app'),
 );
