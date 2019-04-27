@@ -10,7 +10,10 @@ function App(){
       contexts: ['image'],
       onclick: (info) => {
         if (info.srcUrl) {
+          // Communicate with the UploadPage.html
           (window as any).file = info.srcUrl;
+
+          // Jump to the UploadPage.html
           chrome.tabs.create({
             url:'./UploadPage.html',
           });
