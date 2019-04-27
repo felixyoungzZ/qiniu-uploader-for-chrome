@@ -45,9 +45,12 @@
     "@types/qiniu-js": "^2.5.0",
     "@types/react": "^16.8.14",
     "@types/react-dom": "^16.8.4",
+    "@types/styled-components": "^4.1.14",
     "crypto-js": "^3.1.9-1",
     "qiniu-js": "^2.5.4",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react95": "^1.0.3",
+    "styled-components": "^4.2.0"
   }
 }
