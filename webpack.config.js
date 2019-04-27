@@ -76,7 +76,7 @@ module.exports = {
       chunks: ['popup'],
     }),
     new HtmlWebpackPlugin({
-      filename: 'uploadPage.html',
+      filename: 'UploadPage.html',
       template: './public/UploadPage.html',
       chunks: ['uploadPage'],
     }),
