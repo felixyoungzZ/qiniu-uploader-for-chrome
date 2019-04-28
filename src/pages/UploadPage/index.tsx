@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 
 import './index.less';
 
-import { App } from './App';
+import { App } from './components/App';
 
 ReactDOM.render(
   <App />,

@@ -1,26 +1,29 @@
 import * as React from 'react';
 
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import { reset, themes, Button } from 'react95';
-
-import * as styles from './style.less';
+import { reset, themes, List, ListItem } from 'react95';
 
 const ResetStyles = createGlobalStyle`
   ${ reset }
 `;
 
 function RootComponent() {
-  const handleButtonClick = () => {
+  const handleUploadClick = () => {
     chrome.tabs.create({
       url:'./UploadPage.html',
     });
+  };
+
+  const handleExploreClick = () => {
+    window.open('https://felixzzz.cn');
   }
 
   return (
-    <div className={ styles.buttonBox }>
-      <Button onClick={ handleButtonClick }>上传图片</Button>
-    </div>
-  )
+    <List>
+      <ListItem onClick={ handleUploadClick }>🚀 上传图片</ListItem>
+      <ListItem onClick={ handleExploreClick }>👻 探索一下</ListItem>
+    </List>
+  );
 }
 
 export const App = () => (
@@ -30,4 +33,4 @@ export const App = () => (
       <RootComponent />
     </ThemeProvider>
   </React.Fragment>
-)
+);
