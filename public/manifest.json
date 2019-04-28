@@ -3,7 +3,7 @@
   "version": "1.0",
   "description": "An extension for chrome to upload images to qiniu cdn.",
 	"manifest_version": 2,
-	"homepage_url": "https://www.felixzzz.cn",
+	"homepage_url": "https://github.com/felixyoungzZ/qiniu-uploader-for-chrome",
   "icons": {
 		"16": "images/icon.png",
 		"48": "images/icon.png",
