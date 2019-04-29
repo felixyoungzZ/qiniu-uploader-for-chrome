@@ -16,7 +16,7 @@ function RootComponent() {
 
   const handleExploreClick = () => {
     window.open('https://felixzzz.cn');
-  }
+  };
 
   return (
     <List>
