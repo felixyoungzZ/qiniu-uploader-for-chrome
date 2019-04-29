@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 
 import { useEffect } from 'react';
 
-function App(){
+function App() {
   useEffect(() => {
     chrome.contextMenus.create({
       title: '上传图片到七牛云',
@@ -26,7 +26,7 @@ function App(){
     <React.Fragment>
       Hello, background!
     </React.Fragment>
-  )
+  );
 }
 
 ReactDOM.render(

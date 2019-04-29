@@ -4,6 +4,7 @@
   "description": "A cool uploader to upload image to qiniu cdn through chrome",
   "main": "index.js",
   "scripts": {
+    "lint": "tslint --project ./tsconfig.json",
     "watch": "rm -rf ./dist && webpack -w",
     "build": "rm -rf ./dist && webpack"
   },
@@ -29,6 +30,7 @@
     "copy-webpack-plugin": "^5.0.2",
     "css-loader": "^2.1.1",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^2.1.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "postcss-loader": "^3.0.0",

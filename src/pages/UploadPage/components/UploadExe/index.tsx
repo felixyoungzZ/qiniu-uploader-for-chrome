@@ -47,5 +47,5 @@ export function UploadExe() {
           </Table>
         </WindowContent>
       </Window>
-  )
+  );
 }

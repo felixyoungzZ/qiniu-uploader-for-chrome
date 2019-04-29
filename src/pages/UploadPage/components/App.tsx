@@ -6,7 +6,7 @@ import {
   themes,
 } from 'react95';
 
-import { UploadExe } from './UploadExe'
+import { UploadExe } from './UploadExe';
 
 import * as styles from './style.less';
 

@@ -9,5 +9,5 @@ export function App() {
     <React.Fragment>
       Hello, options!
     </React.Fragment>
-  )
+  );
 }
