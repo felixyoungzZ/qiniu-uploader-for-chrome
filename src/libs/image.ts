@@ -1,6 +1,6 @@
 import * as U from './utils';
 
-async function convertFileToDataURLviaFileReader(url:string) : Promise<string> {
+async function convertFileToDataURLviaXHR(url:string) : Promise<string> {
   return new Promise((resolve) => {
     const xhr= new XMLHttpRequest();
     xhr.responseType = 'blob';
@@ -32,11 +32,22 @@ function convertDataURLToBlob(dataURL:string) {
   return new Blob([u8arr], { type:mimeType });
 }
 
-export async function getBlob(url:string) {
+export async function convertURLToBlob(url:string) {
   // URL or dataURL
   if (U.isURL(url)) {
-    url = await convertFileToDataURLviaFileReader(url);
+    url = await convertFileToDataURLviaXHR(url);
   }
 
   return convertDataURLToBlob(url);
+}
+
+export async function convertBlobToDataURL(file:Blob) : Promise<string> {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      resolve((ev.target as any).result);
+    };
+
+    reader.readAsDataURL(file);
+  });
 }

@@ -1,14 +1,35 @@
 .window {
   width: 600px;
-}
 
-.imgBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  img {
-    max-width: 300px;
-    user-select: none;
+  .uploadButton {
+    margin: 15px 0 0 15px;
+
+    input {
+      position: absolute;
+      width: 90px;
+      height: 40px;
+      opacity: 0;
+    }
+  }
+
+  .imgBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    img {
+      max-width: 300px;
+      user-select: none;
+    }
+  }
+  
+  .dropArea {
+    height: 150px;
+    text-align: center;
+  }
+  
+  .imgNameBox {
+    text-align: center;
+    vertical-align: middle;
   }
 }
