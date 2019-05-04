@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 
 import {
+  Checkbox,
   Window,
   WindowHeader,
   Toolbar,
@@ -47,6 +48,7 @@ export function UploadExe() {
   const [imgSrc, setImgSrc] = useState(bg.file);
   const [imgName, setImgName] = useState();
   const [uploadName, setUploadName] = useState('上传的名字');
+  const [isHttps, setIsHttps] = useState(true);
 
   const handleBgFileChange = (src:string) => {
     bg.file = src;
@@ -80,6 +82,10 @@ export function UploadExe() {
 
   const upload = () => {
 
+  };
+
+  const handleIsHttpsChange = (e:Event) => {
+    setIsHttps((e.target as any).value);
   };
 
   const renderImgBox = () => imgSrc ?
@@ -122,9 +128,10 @@ export function UploadExe() {
             </TableRow>
           </TableBody>
         </Table>
-        <Toolbar style={{ marginTop: '15px' }}>
+        <Toolbar className={ styles.optionsBar }>
           <TextField value={ uploadName } onChange={ handleUploadNameChange } />
-          <Button style={{ marginLeft: '15px' }} onClick={ upload }>上传</Button>
+          <Button onClick={ upload }>上传</Button>
+          <Checkbox defaultChecked={ true } checked={ isHttps } onChange={ handleIsHttpsChange } value='isHttps' label='使用 Https' name='isHttps' />
         </Toolbar>
       </WindowContent>
     </Window>
