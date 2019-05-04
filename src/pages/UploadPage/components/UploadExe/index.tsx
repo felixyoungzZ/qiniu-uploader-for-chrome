@@ -14,6 +14,7 @@ import {
   TableDataCell,
   TableBody,
   Fieldset,
+  TextField,
 } from 'react95';
 
 import { convertBlobToDataURL } from '../../../../libs/image';
@@ -45,6 +46,7 @@ export function UploadExe() {
 
   const [imgSrc, setImgSrc] = useState(bg.file);
   const [imgName, setImgName] = useState();
+  const [uploadName, setUploadName] = useState('上传的名字');
 
   const handleBgFileChange = (src:string) => {
     bg.file = src;
@@ -70,6 +72,14 @@ export function UploadExe() {
       const file = e.dataTransfer.files[0];
       await setSelectedFile(file);
     }
+  };
+
+  const handleUploadNameChange = (e:Event) => {
+    setUploadName((e.target as any).value);
+  };
+
+  const upload = () => {
+
   };
 
   const renderImgBox = () => imgSrc ?
@@ -112,6 +122,10 @@ export function UploadExe() {
             </TableRow>
           </TableBody>
         </Table>
+        <Toolbar style={{ marginTop: '15px' }}>
+          <TextField value={ uploadName } onChange={ handleUploadNameChange } />
+          <Button style={{ marginLeft: '15px' }} onClick={ upload }>上传</Button>
+        </Toolbar>
       </WindowContent>
     </Window>
   );
