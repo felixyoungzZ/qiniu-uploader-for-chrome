@@ -59,14 +59,14 @@ export function UploadExe() {
   };
 
   const handleFileInputChange = async (e:React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
+    if (e.target.files && e.target.files[0] && e.target.files[0].type.includes('image')) {
       const file = e.target.files[0];
       await setSelectedFile(file);
     }
   };
 
   const handleDropArea = async (e:React.DragEvent<HTMLElement>) => {
-    if (e.dataTransfer && e.dataTransfer.files.length > 0 && e.dataTransfer.files[0].type.includes('image')) {
+    if (e.dataTransfer && e.dataTransfer.files[0] && e.dataTransfer.files[0].type.includes('image')) {
       const file = e.dataTransfer.files[0];
       await setSelectedFile(file);
     }
