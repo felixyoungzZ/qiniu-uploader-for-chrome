@@ -56,6 +56,9 @@ export function UploadExe() {
   };
 
   const setSelectedFile = async (file:File) => {
+    // TODO:
+    // use window.URL.createObjectURL() ?
+    // It's still in Working Draft.
     const dataURL = await convertBlobToDataURL(file);
 
     handleBgFileChange(dataURL);
