@@ -18,7 +18,8 @@ import {
   TextField,
 } from 'react95';
 
-import { convertBlobToDataURL } from '../../../../libs/image';
+import * as qiniu from '../../../../libs/qiniu';
+import { convertBlobToDataURL, convertURLToBlob } from '../../../../libs/image';
 import * as styles from './style.less';
 
 interface Background extends Window {
@@ -83,8 +84,22 @@ export function UploadExe() {
     setUploadName((e.target as any).value);
   };
 
-  const upload = () => {
+  const upload = async () => {
+    if (!bg.file) { return; }
 
+    const uploader = await qiniu.getUploader();
+    uploader(await convertURLToBlob(bg.file), uploadName)
+      .subscribe({
+        next(res) {
+          console.log(res);
+        },
+        complete(res) {
+          console.log(res);
+        },
+        error(err) {
+          console.log(err);
+        },
+      });
   };
 
   const handleIsHttpsChange = (e:Event) => {
