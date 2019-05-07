@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import {
   Checkbox,
@@ -18,6 +18,7 @@ import {
   TextField,
 } from 'react95';
 
+import { ResultBox } from '../ResultBox';
 import * as qiniu from '../../../../libs/qiniu';
 import { convertBlobToDataURL, convertURLToBlob } from '../../../../libs/image';
 import * as styles from './style.less';
@@ -46,10 +47,12 @@ export function UploadExe() {
     listenOnBeforeUnload();
   });
 
+  const inputFileEL = useRef<HTMLInputElement>(null);
   const [imgSrc, setImgSrc] = useState(bg.file);
   const [imgName, setImgName] = useState();
   const [uploadName, setUploadName] = useState('上传的名字');
   const [isHttps, setIsHttps] = useState(true);
+  const [isUploaded, setIsUploaded] = useState(false);
 
   const handleBgFileChange = (src:string) => {
     bg.file = src;
@@ -94,12 +97,24 @@ export function UploadExe() {
           console.log(res);
         },
         complete(res) {
+          setIsUploaded(true);
           console.log(res);
         },
         error(err) {
           console.log(err);
         },
       });
+  };
+
+  const cancel = () => {
+    bg.file = undefined;
+    if (inputFileEL.current) {
+      inputFileEL.current.value = '';
+    }
+
+    setImgSrc(undefined);
+    setUploadName('');
+    setIsUploaded(false);
   };
 
   const handleIsHttpsChange = (e:Event) => {
@@ -123,13 +138,23 @@ export function UploadExe() {
       </React.Fragment>
     );
 
+  const renderResultBox = () => isUploaded ?
+    (
+      <ResultBox isHttps={ isHttps } uploadName={ uploadName } />
+    ) :
+    (
+      <React.Fragment>
+        清先上传图片哦~
+      </React.Fragment>
+    );
+
   return (
     <Window className={ styles.window }>
       <WindowHeader>upload.exe</WindowHeader>
       <Toolbar>
         <Button size='md' className={ styles.uploadButton }>
           选择图片
-          <input type='file' onChange={ handleFileInputChange } accept='image/*' />
+          <input ref={ inputFileEL } type='file' onChange={ handleFileInputChange } accept='image/*' />
         </Button>
       </Toolbar>
       <WindowContent>
@@ -149,8 +174,10 @@ export function UploadExe() {
         <Toolbar className={ styles.optionsBar }>
           <TextField value={ uploadName } onChange={ handleUploadNameChange } />
           <Button onClick={ upload }>上传</Button>
+          <Button onClick={ cancel }>取消</Button>
           <Checkbox defaultChecked={ true } checked={ isHttps } onChange={ handleIsHttpsChange } value='isHttps' label='使用 Https' name='isHttps' />
         </Toolbar>
+        { renderResultBox() }
       </WindowContent>
     </Window>
   );
